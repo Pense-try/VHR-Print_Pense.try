@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VHR Print - Soluções Gráficas</title>
+
+    <!-- Tailwind CSS + Plugins -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,typography,aspect-ratio,line-clamp"></script>
+
+    <!-- Adicione isto no <head> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Fontes Otimizadas -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&family=Archivo+Black&display=swap"
+        rel="stylesheet">
+
+    <!-- Estilos Aprimorados -->
+    <style>
+        :root {
+            --primary: #2563EB;
+            /* Azul Profissional */
+            --secondary: #FF1F5A;
+            /* Rosa Vibrante */
+            --dark: #1A1A1A;
+            /* Preto Contraste */
+            --light: #FFFFFF;
+            /* Base Branca */
+        }
+
+        .font-heading {
+            font-family: 'Bebas Neue', cursive;
+            letter-spacing: 1.2px;
+            line-height: 0.9;
+        }
+
+        .font-cta {
+            font-family: 'Archivo Black', sans-serif;
+            letter-spacing: 0.5px;
+        }
+
+        .font-body {
+            font-family: 'Inter', sans-serif;
+        }
+
+        .bg-primary {
+            background-color: var(--primary);
+        }
+
+        .bg-secondary {
+            background-color: var(--secondary);
+        }
+
+        .bg-blur {
+            background-color: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .button-primary {
+            background-color: var(--primary);
+            color: var(--light);
+            border: 2px solid var(--primary);
+            transition: all 0.4s ease-in-out;
+            text-align: center;
+        }
+
+        .button-primary:hover {
+            background-color: var(--light);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .button-secondary {
+            background-color: var(--secondary);
+            color: var(--light);
+            border: 2px solid var(--secondary);
+            transition: all 0.4s ease-in-out;
+            text-align: center;
+        }
+
+        .button-secondary:hover {
+            background-color: var(--light);
+            color: var(--secondary);
+            border: 2px solid var(--secondary);
+        }
+
+
+        .hero-gradient {
+            background: linear-gradient(45deg, var(--primary) 0%, var(--secondary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        @keyframes slide-in {
+            0% {
+                transform: translateY(100px);
+                opacity: 0;
+            }
+
+            100% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .animate-slide-in {
+            animation: slide-in 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+
+        /* Adicionei estas novas classes */
+        .decorative-line {
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary) 0%, var(--secondary) 100%);
+            margin: 2rem auto;
+        }
+
+        .text-highlight {
+            position: relative;
+            display: inline-block;
+            z-index: 1;
+        }
+
+        .text-highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0.2em;
+            left: -0.3em;
+            width: calc(100% + 0.6em);
+            height: 0.4em;
+            background-color: var(--secondary);
+            opacity: 0.2;
+            z-index: -1;
+            border-radius: 2px;
+        }
+
+
+        .active-filter {
+            background-color: var(--primary);
+            color: var(--light);
+            border-color: transparent;
+        }
+
+        #portfolio-grid img {
+            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+    </style>
+</head>
+
+<body class="font-body bg-light">
+
+    <!-- Navbar Inteligente -->
+    <nav class="fixed w-full bg-light/95 backdrop-blur-md z-50">
+        <div class="container mx-auto px-4 xl:px-0 py-3">
+            <div class="flex items-center justify-between">
+                <!-- Logo Interativo -->
+                <a href="#" class="flex items-center gap-2 group">
+                    <div class="bg-primary rounded-lg shadow-md">
+                        <span class="font-cta text-2xl p-2 text-white">VHR</span>
+                    </div>
+                    <span class="font-cta text-2xl text-dark">PRINT</span>
+                </a>
+
+                <!-- Menu Desktop Dinâmico -->
+                <div class="hidden lg:flex items-center gap-8">
+                    <a href="#"
+                        class="text-dark hover:text-primary transition-all font-medium hover:-translate-y-1">Home</a>
+                    <a href="#"
+                        class="text-dark hover:text-secondary transition-all font-medium hover:-translate-y-1">Serviços</a>
+                    <a href="#"
+                        class="text-dark hover:text-primary transition-all font-medium hover:-translate-y-1">Portfólio</a>
+                    <a href="#"
+                        class="text-dark hover:text-secondary transition-all font-medium hover:-translate-y-1">Contato</a>
+                    <a href="#" class="button-primary px-6 py-3 rounded-full shadow-lg font-cta">
+                        ORÇAMENTO EXPRESS
+                    </a>
+                </div>
+
+                <!-- Mobile Menu Moderno -->
+                <button id="mobile-menu-button" class="lg:hidden text-dark p-2 rounded-lg hover:bg-gray-100">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section Ultra Impactante -->
+    <section class="min-h-screen flex items-center pt-20 pb-12 lg:pt-0">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="grid lg:grid-cols-2 gap-16 items-center">
+                <!-- Conteúdo Principal -->
+                <div class="space-y-8 animate-slide-in">
+                    <h1 class="font-heading text-6xl md:text-7xl xl:text-8xl">
+                        <span class="hero-gradient">IMPRESSÃO</span><br>
+                        <span class="text-dark">QUE</span><br>
+                        <span class="text-primary">TRANSFORMA</span>
+                    </h1>
+
+                    <p class="text-dark text-xl md:text-2xl max-w-2xl">
+                        Da concepção à entrega, criamos experiências gráficas que
+                        <span class="font-bold text-primary">elevam marcas</span> e
+                        <span class="font-bold text-secondary">impulsionam negócios</span>.
+                    </p>
+
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <a href="#" class="button-primary px-8 py-4 rounded-full font-cta 
+                                   hover:bg-secondary transform transition duration-300 hover:scale-105 
+                                   shadow-lg hover:shadow-xl">
+                            CRIAR PROJETO AGORA
+                        </a>
+                        <a href="#" class="button-secondary px-8 py-4">
+                            EXPLORAR PORTFÓLIO
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Container de Imagem Premium -->
+                <div class="relative group animate-slide-in">
+                    <div class="relative overflow-hidden rounded-2xl shadow-2xl 
+                             transform transition duration-500 hover:scale-105">
+                        <a href="#">
+                            <img src="./src/Img/Img_home.png" alt="Projetos de Excelência"
+                                class="w-full h-auto object-cover aspect-video">
+                        </a>
+                    </div>
+                    <!-- Badge de Destaque -->
+                    <div class="bg-blur text-[var(--secondary)] absolute -top-6 -right-4 px-6 py-2 
+                             rounded-full font-cta transform rotate-12">
+                        NOVOS PROJETOS
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Menu Full-Screen -->
+    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-light z-50 hidden transition-opacity">
+        <div class="container mx-auto px-4 py-8 h-full flex flex-col justify-center">
+            <div class="flex flex-col space-y-6 text-center">
+                <a href="#" class="text-3xl text-dark hover:text-primary py-3">Home</a>
+                <a href="#" class="text-3xl text-dark hover:text-secondary py-3">Serviços</a>
+                <a href="#" class="text-3xl text-dark hover:text-primary py-3">Portfólio</a>
+                <a href="#" class="text-3xl text-dark hover:text-secondary py-3">Contato</a>
+                <button class="bg-primary text-light px-8 py-4 rounded-full mx-auto mt-8 
+                          font-cta hover:bg-secondary transition-all">
+                    ORÇAMENTO RÁPIDO
+                </button>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Seção Sobre Simplificada -->
+    <section class="min-h-screen flex items-center py-20">
+        <div class="container mx-auto px-4 xl:px-0 max-w-3xl"> <!-- Limite de largura -->
+            <div class="text-center animate-slide-in"> <!-- Removido grid -->
+
+                <!-- Cabeçalho -->
+                <div class="mb-12">
+                    <span class="font-cta text-primary text-lg">DESDE 2015</span>
+                    <div class="decorative-line"></div>
+                    <h2 class="font-heading text-5xl md:text-6xl text-dark mb-4">
+                        <span class="text-highlight">VHR PRINT</span><br>
+                        <span class="text-primary">PASSÃO POR</span>
+                        <span class="text-secondary">DETALHES</span>
+                    </h2>
+                </div>
+
+                <!-- Conteúdo -->
+                <div class="space-y-8">
+                    <p class="text-dark text-lg md:text-xl leading-relaxed">
+                        Somos especialistas em transformar ideias em
+                        <strong class="text-primary">experiências tangíveis</strong>.
+                        Cada projeto é tratado com precisão técnica e
+                        <strong class="text-secondary">criatividade inovadora</strong>,
+                        garantindo resultados que <span class="text-primary font-cta">superam expectativas</span>.
+                    </p>
+
+                    <!-- Destaques -->
+                    <div class="grid md:grid-cols-3 gap-6 mt-16">
+                        <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
+                            <div class="text-primary font-cta text-4xl mb-2">15K+</div>
+                            <div class="text-dark">Projetos Entregues</div>
+                        </div>
+                        <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
+                            <div class="text-secondary font-cta text-4xl mb-2">48h</div>
+                            <div class="text-dark">Entrega Expressa</div>
+                        </div>
+                        <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
+                            <div class="text-primary font-cta text-4xl mb-2">100%</div>
+                            <div class="text-dark">Satisfação</div>
+                        </div>
+                    </div>
+
+                    <!-- Chamada para Ação -->
+                    <div class="flex flex-col md:flex-row md:justify-center gap-4 mt-12">
+                        <a href="#" class="button-primary px-8 py-4 rounded-full font-cta">
+                            NOSSOS SERVIÇOS
+                        </a>
+                        <a href="#" class="button-secondary px-8 py-4">
+                            ENTRE EM CONTATO
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-20 bg-light">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="text-center mb-4 md:mb-16 animate-slide-in">
+                <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
+                    <span class="text-primary">SOLUÇÕES</span>
+                    <span class="text-secondary">COMPLETAS</span>
+                </h2>
+                <p class="text-dark text-lg md:text-xl max-w-2xl mx-auto">
+                    Do conceito à entrega final, oferecemos tudo o que sua marca precisa para se destacar
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
+                <!-- Card de Serviço 1 -->
+                <div class="p-4 md:p-8 border rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="bg-primary/10 w-max p-0 md:p-4 rounded-xl mb-2 md:mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-4">Impressão Digital</h3>
+                    <p class="text-dark mb-6">Qualidade superior em pequenas e grandes tiragens com tecnologia de última
+                        geração</p>
+                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                        Solicite o seu projeto
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card de Serviço 2 -->
+                <div class="p-4 md:p-8 border rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="bg-secondary/10 w-max p-0 md:p-4 rounded-xl mb-2 md:mb-6">
+                        <svg class="w-8 h-8 text-secondary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                        </svg>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-4">Personalização</h3>
+                    <p class="text-dark mb-6">Acabamentos especiais e técnicas exclusivas para material único</p>
+                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                        Solicite o seu projeto
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+
+                <!-- Card de Serviço 3 -->
+                <div class="p-4 md:p-8 border rounded-2xl hover:shadow-xl transition-all duration-300">
+                    <div class="bg-primary/10 w-max p-0 md:p-4 rounded-xl mb-2 md:mb-6">
+                        <svg class="w-8 h-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-4">Projetos Especiais</h3>
+                    <p class="text-dark mb-6">Desenvolvimento de embalagens premium e materiais promocionais</p>
+                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                        Solicite o seu projeto
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+
+            <!-- CTA Final -->
+            <div class="text-center mt-8 md:mt-16 animate-slide-in">
+                <p class="text-dark text-base md:text-lg mb-4 md:mb-8">Precisa de algo específico? Nós desenvolvemos
+                    soluções sob medida</p>
+                <a href="#" class="button-primary px-8 py-4 rounded-full font-cta inline-block">
+                    FALE COM UM ESPECIALISTA
+                </a>
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+    <!-- Seção Portfólio -->
+    <section class="py-20 bg-light">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="text-center mb-12 animate-slide-in">
+                <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
+                    <span class="text-primary">NOSSOS</span>
+                    <span class="text-secondary">PROJETOS</span>
+                </h2>
+                <p class="text-dark text-lg md:text-xl">Conheça alguns dos trabalhos que já realizamos</p>
+            </div>
+
+            <!-- Filtros -->
+            <div class="flex flex-wrap gap-4 justify-center mb-12" id="portfolio-filters">
+                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors active-filter"
+                    data-filter="all">
+                    Todos
+                </button>
+                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
+                    data-filter="grafica">
+                    Gráfica
+                </button>
+                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
+                    data-filter="sinalizacao">
+                    Sinalização
+                </button>
+                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
+                    data-filter="personalizados">
+                    Personalizados
+                </button>
+            </div>
+
+            <!-- Grid de Projetos -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
+                <!-- Projetos serão inseridos dinamicamente aqui -->
+            </div>
+        </div>
+    </section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="py-20 bg-light">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="text-center mb-16 animate-slide-in">
+                <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
+                    <span class="text-primary">FALE</span>
+                    <span class="text-secondary">CONOSCO</span>
+                </h2>
+                <p class="text-dark text-lg md:text-xl">Estamos prontos para transformar suas ideias em realidade</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Informações de Contato -->
+                <div class="space-y-8">
+                    <!-- Localização -->
+                    <div class="flex items-start gap-6 group">
+                        <div class="bg-primary/10 p-4 rounded-lg">
+                            <i class="fas fa-map-marker-alt text-2xl text-primary"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-cta text-xl text-dark mb-2">Nossa Localização</h3>
+                            <p class="text-dark">Rosário do Ivaí/PR</p>
+                        </div>
+                    </div>
+
+                    <!-- WhatsApp -->
+                    <a href="#" class="flex items-start items-center gap-6 group hover:-translate-y-1 transition-all">
+                        <div class="bg-primary w-12 h-12 flex items-center justify-center p-2 rounded-full">
+                            <i class="fab fa-whatsapp text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-cta text-xl text-dark mb-2">WhatsApp</h3>
+                            <p class="text-[var(--primary)]">(44) 99999-9999</p>
+                        </div>
+                    </a>
+
+                    <!-- Instagram -->
+                    <a href="#" class="flex items-start items-center gap-6 group hover:-translate-y-1 transition-all">
+                        <div class="bg-secondary w-12 h-12 flex items-center justify-center p-2 rounded-full">
+                            <i class="fab fa-instagram text-2xl text-white"></i>
+                        </div>
+                        <div>
+                            <h3 class="font-cta text-xl text-dark mb-2">Instagram</h3>
+                            <p class="text-[var(--secondary)]">@vhrprint</p>
+                        </div>
+                    </a>
+                </div>
+
+                <!-- Mapa -->
+                <div class="h-96 w-full rounded-2xl overflow-hidden shadow-xl border-4 border-white">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d23102.87908031642!2d-51.42949596912775!3d-24.246911405215545!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ec0b8f4d5d2505%3A0x9d9d9d9d9d9d9d9d!2sRos%C3%A1rio%20do%20Iva%C3%AD%2C%20PR%2C%2086850-000!5e0!3m2!1spt-BR!2sbr!4v1717624799421!5m2!1spt-BR!2sbr"
+                        class="w-full h-full" style="border:0;" allowfullscreen="" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-black text-white pt-12 pb-8">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 mb-12 animate-slide-in">
+                <!-- Logo e Slogan -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-2">
+                        <div class="bg-primary p-2 rounded-lg">
+                            <span class="font-cta text-xl text-white">VHR</span>
+                        </div>
+                        <span class="font-cta text-xl">PRINT</span>
+                    </div>
+                    <p class="text-sm opacity-80">
+                        Transformando ideias em impressões memoráveis desde 2015
+                    </p>
+                </div>
+
+                <!-- Links Rápidos -->
+                <div>
+                    <h4 class="font-cta text-lg text-primary mb-4">NAVEGAÇÃO</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-secondary transition-colors">Home</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Serviços</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Portfólio</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Sobre</a></li>
+                    </ul>
+                </div>
+
+                <!-- Serviços -->
+                <div>
+                    <h4 class="font-cta text-lg text-primary mb-4">SERVIÇOS</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#" class="hover:text-secondary transition-colors">Impressão Digital</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Material Gráfico</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Sinalização</a></li>
+                        <li><a href="#" class="hover:text-secondary transition-colors">Personalizados</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contato -->
+                <div>
+                    <h4 class="font-cta text-lg text-primary mb-4">CONTATO</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-map-marker-alt text-secondary"></i>
+                            Rosário do Ivaí/PR
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-phone text-secondary"></i>
+                            <a href="tel:+5544999999999" class="hover:text-secondary">(44) 99999-9999</a>
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <i class="fas fa-envelope text-secondary"></i>
+                            <a href="mailto:contato@vhrprint.com" class="hover:text-secondary">contato@vhrprint.com</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Redes Sociais e Copyright -->
+            <div class="border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center gap-6">
+                    <div class="flex space-x-6">
+                        <a href="#" class="bg-secondary/20 p-3 rounded-full hover:bg-secondary/30 transition-colors">
+                            <i class="fab fa-instagram text-xl"></i>
+                        </a>
+                        <a href="#" class="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
+                            <i class="fab fa-whatsapp text-xl"></i>
+                        </a>
+                    </div>
+                    <p class="text-sm opacity-80 text-center">
+                        © 2024 VHR Print. Todos os direitos reservados.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+        // Controle de Menu Avançado
+        const menuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        menuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+            document.body.classList.toggle('overflow-hidden');
+        });
+
+        // Fechar menu ao tocar fora
+        mobileMenu.addEventListener('click', (e) => {
+            if (e.target === mobileMenu) {
+                mobileMenu.classList.add('hidden');
+                document.body.classList.remove('overflow-hidden');
+            }
+        });
+
+        // Observador de Intersecção para Animação
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-slide-in');
+                }
+            });
+        }, { threshold: 0.1 });
+
+        document.querySelectorAll('.animate-on-scroll').forEach(el => {
+            observer.observe(el);
+        });
+
+
+
+
+
+
+
+
+
+
+        // Array de projetos
+        const portfolioItems = [
+            {
+                image: "projeto-01.jpg",
+                category: "grafica",
+                title: "Material Promocional",
+                description: "Cartazes em alta resolução para campanha verão"
+            },
+            {
+                image: "projeto-02.jpg",
+                category: "sinalizacao",
+                title: "Placas Corporativas",
+                description: "Sinalização interna para empresa de tecnologia"
+            },
+            {
+                image: "projeto-03.jpg",
+                category: "personalizados",
+                title: "Brindes Personalizados",
+                description: "Canecas e ecobags com estampa digital"
+            },
+            {
+                image: "projeto-04.jpg",
+                category: "grafica",
+                title: "Folders Institucionais",
+                description: "Material gráfico para rede de clínicas"
+            },
+            {
+                image: "projeto-05.jpg",
+                category: "sinalizacao",
+                title: "Fachada Luminosa",
+                description: "Instalação completa para loja conceito"
+            },
+            {
+                image: "projeto-06.jpg",
+                category: "personalizados",
+                title: "Uniforme Corporativo",
+                description: "Estamparia em camisas polo"
+            }
+        ];
+
+        // Função para gerar os cards
+        function generatePortfolioItems(filter = 'all') {
+            const grid = document.getElementById('portfolio-grid');
+            grid.innerHTML = '';
+
+            const filteredItems = filter === 'all'
+                ? portfolioItems
+                : portfolioItems.filter(item => item.category === filter);
+
+            filteredItems.forEach(item => {
+                const card = `
+            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all">
+                <img src="src/img/portfolio/${item.image}" 
+                     alt="${item.title}" 
+                     class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform"
+                     loading="lazy">
+                
+                <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent p-6 flex flex-col justify-end">
+                    <h3 class="font-cta text-light text-xl mb-2">${item.title}</h3>
+                    <p class="text-light/80 text-sm">${item.description}</p>
+                </div>
+            </div>
+        `;
+                grid.innerHTML += card;
+            });
+        }
+
+        // Filtragem
+        document.querySelectorAll('#portfolio-filters button').forEach(button => {
+            button.addEventListener('click', () => {
+                // Remove classe ativa
+                document.querySelectorAll('#portfolio-filters button').forEach(btn => {
+                    btn.classList.remove('active-filter', 'bg-primary', 'text-light');
+                });
+
+                // Adiciona classe ativa
+                button.classList.add('active-filter', 'bg-primary', 'text-light');
+                const filter = button.dataset.filter;
+                generatePortfolioItems(filter);
+            });
+        });
+    </script>
+</body>
+
+</html>
