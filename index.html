@@ -211,27 +211,27 @@
 
                 <!-- Menu Desktop -->
                 <div class="hidden lg:flex items-center gap-8">
-                    <a href="#" class="text-dark hover:text-primary transition-all font-medium relative group">
+                    <a href="#home" class="text-dark hover:text-primary transition-all font-medium relative group">
                         Home
                         <span
                             class="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-dark hover:text-secondary transition-all font-medium relative group">
+                    <a href="#servicos" class="text-dark hover:text-secondary transition-all font-medium relative group">
                         Serviços
                         <span
                             class="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-dark hover:text-primary transition-all font-medium relative group">
+                    <a href="#portfolio" class="text-dark hover:text-primary transition-all font-medium relative group">
                         Portfólio
                         <span
                             class="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#" class="text-dark hover:text-secondary transition-all font-medium relative group">
+                    <a href="#contato" class="text-dark hover:text-secondary transition-all font-medium relative group">
                         Contato
                         <span
                             class="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all group-hover:w-full"></span>
                     </a>
-                    <a href="#"
+                    <a href="https://wa.me/554391254030" target="_blank"
                         class="button-primary px-6 py-3 rounded-full shadow-lg font-cta hover:scale-105 transition-transform">
                         ORÇAMENTO
                     </a>
@@ -241,7 +241,7 @@
                 <button id="mobile-menu-button" class="lg:hidden p-2">
                     <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16"/>
+                            d="M4 6h16M4 12h16M4 18h16" />
                     </svg>
                 </button>
             </div>
@@ -251,18 +251,19 @@
         <div id="mobile-menu" class="lg:hidden absolute w-full bg-white shadow-lg hidden">
             <div class="container mx-auto px-4 py-4">
                 <div class="flex flex-col space-y-4">
-                    <a href="#" class="text-dark hover:text-primary">Home</a>
-                    <a href="#" class="text-dark hover:text-secondary">Serviços</a>
-                    <a href="#" class="text-dark hover:text-primary">Portfólio</a>
-                    <a href="#" class="text-dark hover:text-secondary">Contato</a>
-                    <a href="#" class="button-primary w-full text-center py-2 rounded-full">Orçamento</a>
+                    <a href="#home" class="text-dark hover:text-primary">Home</a>
+                    <a href="#servicos" class="text-dark hover:text-secondary">Serviços</a>
+                    <a href="#portfolio" class="text-dark hover:text-primary">Portfólio</a>
+                    <a href="#contato" class="text-dark hover:text-secondary">Contato</a>
+                    <a href="https://wa.me/554391254030" target="_blank"
+                        class="button-primary w-full text-center py-2 rounded-full">Orçamento</a>
                 </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section Ultra Impactante -->
-    <section class="min-h-screen flex items-center pt-20 lg:pt-0">
+    <section class="min-h-screen flex items-center pt-20 lg:pt-0" id="home">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Conteúdo Principal -->
@@ -280,12 +281,12 @@
                     </p>
 
                     <div class="flex flex-col sm:flex-row gap-4">
-                        <a href="#" class="button-primary px-8 py-4 rounded-full font-cta 
+                        <a href="https://wa.me/554391254030" target="_blank" class="button-primary px-8 py-4 rounded-full font-cta 
                                    hover:bg-secondary transform transition duration-300 hover:scale-105 
                                    shadow-lg hover:shadow-xl">
                             CRIAR PROJETO AGORA
                         </a>
-                        <a href="#" class="button-secondary px-8 py-4">
+                        <a href="#portfolio" class="button-secondary px-8 py-4">
                             EXPLORAR PORTFÓLIO
                         </a>
                     </div>
@@ -311,7 +312,7 @@
     </section>
 
     <!-- Seção Sobre Simplificada -->
-    <section class="min-h-screen flex items-center py-20">
+    <section class="min-h-screen flex items-center py-20" id="sobre">
         <div class="container mx-auto px-4 xl:px-0 max-w-3xl"> <!-- Limite de largura -->
             <div class="text-center animate-slide-in"> <!-- Removido grid -->
 
@@ -354,10 +355,10 @@
 
                     <!-- Chamada para Ação -->
                     <div class="flex flex-col md:flex-row md:justify-center gap-4 mt-12">
-                        <a href="#" class="button-primary px-8 py-4 rounded-full font-cta">
+                        <a href="#servicos" class="button-primary px-8 py-4 rounded-full font-cta">
                             NOSSOS SERVIÇOS
                         </a>
-                        <a href="#" class="button-secondary px-8 py-4">
+                        <a href="https://wa.me/554391254030" target="_blank" class="button-secondary px-8 py-4">
                             ENTRE EM CONTATO
                         </a>
                     </div>
@@ -366,7 +367,7 @@
         </div>
     </section>
 
-    <section class="py-16 bg-light">
+    <section class="py-16 bg-light" id="servicos">
         <div class="container mx-auto px-4">
             <h2 class="font-heading text-3xl md:text-4xl text-center mb-6 md:mb-12">
                 <span class="text-primary">Nossos</span>
@@ -455,17 +456,15 @@
         </div>
     </section>
 
-    <section class="py-16 bg-white">
+    <section class="py-16 bg-white" id="qualidade">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
                 <!-- Imagem -->
                 <div class="order-1 md:order-2 max-w-xl">
-                    <img src="./src/Img/img_desc.jpeg" 
-                         alt="Profissionalismo gráfico" 
-                         class="w-full h-auto rounded-xl shadow-lg object-cover"
-                         loading="lazy">
+                    <img src="./src/Img/img_desc.jpeg" alt="Profissionalismo gráfico"
+                        class="w-full h-auto rounded-xl shadow-lg object-cover" loading="lazy">
                 </div>
-    
+
                 <!-- Texto -->
                 <div class="order-2 md:order-1">
                     <div class="text-center md:text-left mb-8">
@@ -475,24 +474,24 @@
                         </h2>
                         <div class="w-24 h-1 bg-primary mx-auto md:mx-0 mb-8"></div>
                     </div>
-    
+
                     <div class="space-y-6 text-dark/90 text-lg leading-relaxed">
                         <p class="flex items-start gap-3">
                             <span class="text-primary text-xl mt-1">•</span>
-                            Em um mercado cada vez mais visual, o impacto gráfico é decisivo na percepção 
-                            da sua marca. Trabalhamos com precisão técnica para garantir que cada projeto 
+                            Em um mercado cada vez mais visual, o impacto gráfico é decisivo na percepção
+                            da sua marca. Trabalhamos com precisão técnica para garantir que cada projeto
                             comunique profissionalismo.
                         </p>
-    
+
                         <p class="flex items-start gap-3">
                             <span class="text-secondary text-xl mt-1">•</span>
-                            Nossa equipe especializada combina tecnologia de ponta com atenção aos detalhes, 
+                            Nossa equipe especializada combina tecnologia de ponta com atenção aos detalhes,
                             desde a pré-impressão até o acabamento final, garantindo resultados impecáveis.
                         </p>
-    
+
                         <p class="flex items-start gap-3">
                             <span class="text-primary text-xl mt-1">•</span>
-                            Materiais de alta qualidade, processos rigorosos e prazos cumpridos são a base 
+                            Materiais de alta qualidade, processos rigorosos e prazos cumpridos são a base
                             do nosso compromisso com a excelência gráfica.
                         </p>
                     </div>
@@ -501,7 +500,7 @@
         </div>
     </section>
 
-    <section class="py-20 bg-light">
+    <section class="py-20 bg-light" id="solucoes">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="text-center mb-4 md:mb-16 animate-slide-in">
                 <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
@@ -525,7 +524,8 @@
                     <h3 class="font-cta text-xl text-dark mb-4">Impressão Digital</h3>
                     <p class="text-dark mb-6">Qualidade superior em pequenas e grandes tiragens com tecnologia de última
                         geração</p>
-                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                    <a href="https://wa.me/554391254030" target="_blank"
+                        class="text-primary hover:text-secondary flex items-center gap-2">
                         Solicite o seu projeto
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -544,7 +544,8 @@
                     </div>
                     <h3 class="font-cta text-xl text-dark mb-4">Personalização</h3>
                     <p class="text-dark mb-6">Acabamentos especiais e técnicas exclusivas para material único</p>
-                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                    <a href="https://wa.me/554391254030" target="_blank"
+                        class="text-primary hover:text-secondary flex items-center gap-2">
                         Solicite o seu projeto
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -563,7 +564,8 @@
                     </div>
                     <h3 class="font-cta text-xl text-dark mb-4">Impressão 3D</h3>
                     <p class="text-dark mb-6">Impressão 3D com alta qualidade e tecnologia avançada</p>
-                    <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
+                    <a href="https://wa.me/554391254030" target="_blank"
+                        class="text-primary hover:text-secondary flex items-center gap-2">
                         Solicite o seu projeto
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -577,7 +579,8 @@
             <div class="text-center mt-8 md:mt-16 animate-slide-in">
                 <p class="text-dark text-base md:text-lg mb-4 md:mb-8">Precisa de algo específico? Nós desenvolvemos
                     soluções sob medida</p>
-                <a href="#" class="button-primary px-8 py-4 rounded-full font-cta inline-block">
+                <a href="https://wa.me/554391254030" target="_blank"
+                    class="button-primary px-8 py-4 rounded-full font-cta inline-block">
                     FALE COM UM ESPECIALISTA
                 </a>
             </div>
@@ -598,7 +601,7 @@
 
 
     <!-- Seção Carrossel -->
-    <section class="py-20 bg-light">
+    <section class="py-20 bg-light" id="portfolio">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="text-center mb-8 md:mb-12">
                 <h2 class="font-heading text-4xl md:text-5xl text-dark mb-2 md:mb-4">
@@ -622,7 +625,7 @@
 
             <!-- Botão WhatsApp -->
             <div class="text-center mt-6 md:mt-12">
-                <a href="https://wa.me/5544999999999" target="_blank"
+                <a href="https://wa.me/554391254030" target="_blank"
                     class="button-secondary inline-flex items-center gap-2 px-8 py-4">
                     <i class="fab fa-whatsapp"></i>
                     Quero um Projeto Igual
@@ -644,7 +647,7 @@
 
 
 
-    <section class="py-20 bg-light">
+    <section class="py-20 bg-light" id="contato">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="text-center mb-16 animate-slide-in">
                 <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
@@ -669,16 +672,16 @@
                     </div>
 
                     <!-- WhatsApp -->
-                    <a href="#" class="flex items-start items-center gap-6 group hover:-translate-y-1 transition-all">
+                    <a href="https://wa.me/554391254030" target="_blank"
+                        class="flex items-start items-center gap-6 group hover:-translate-y-1 transition-all">
                         <div class="bg-primary w-12 h-12 flex items-center justify-center p-2 rounded-full">
                             <i class="fab fa-whatsapp text-2xl text-white"></i>
                         </div>
                         <div>
                             <h3 class="font-cta text-xl text-dark mb-2">WhatsApp</h3>
-                            <p class="text-[var(--primary)]">(44) 99999-9999</p>
+                            <p class="text-[var(--primary)]">(43) 9 9125-4030</p>
                         </div>
                     </a>
-
                     <!-- Instagram -->
                     <a href="#" class="flex items-start items-center gap-6 group hover:-translate-y-1 transition-all">
                         <div class="bg-secondary w-12 h-12 flex items-center justify-center p-2 rounded-full">
@@ -723,10 +726,9 @@
                 <div>
                     <h4 class="font-cta text-lg text-primary mb-4">NAVEGAÇÃO</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-secondary transition-colors">Home</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Serviços</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Portfólio</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Sobre</a></li>
+                        <li><a href="#home" class="hover:text-secondary transition-colors">Home</a></li>
+                        <li><a href="#servicos" class="hover:text-secondary transition-colors">Serviços</a></li>
+                        <li><a href="#portfolio" class="hover:text-secondary transition-colors">Portfólio</a></li>
                     </ul>
                 </div>
 
@@ -734,10 +736,9 @@
                 <div>
                     <h4 class="font-cta text-lg text-primary mb-4">SERVIÇOS</h4>
                     <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-secondary transition-colors">Impressão Digital</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Material Gráfico</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Sinalização</a></li>
-                        <li><a href="#" class="hover:text-secondary transition-colors">Personalizados</a></li>
+                        <li><a href="#servicos" class="hover:text-secondary transition-colors">Impressão Digital</a></li>
+                        <li><a href="#servicos" class="hover:text-secondary transition-colors">Material Gráfico</a></li>
+                        <li><a href="#servicos" class="hover:text-secondary transition-colors">Sinalização</a></li>
                     </ul>
                 </div>
 
@@ -751,11 +752,7 @@
                         </li>
                         <li class="flex items-center gap-2">
                             <i class="fas fa-phone text-secondary"></i>
-                            <a href="tel:+5544999999999" class="hover:text-secondary">(44) 99999-9999</a>
-                        </li>
-                        <li class="flex items-center gap-2">
-                            <i class="fas fa-envelope text-secondary"></i>
-                            <a href="mailto:contato@vhrprint.com" class="hover:text-secondary">contato@vhrprint.com</a>
+                            <a href="https://wa.me/554391254030" target="_blank" class="hover:text-secondary">(43) 99125-4030</a>
                         </li>
                     </ul>
                 </div>
@@ -768,7 +765,9 @@
                         <a href="#" class="bg-secondary/20 p-3 rounded-full hover:bg-secondary/30 transition-colors">
                             <i class="fab fa-instagram text-xl"></i>
                         </a>
-                        <a href="#" class="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
+
+                        <a href="https://wa.me/554391254030" target="_blank"
+                            class="bg-primary/20 p-3 rounded-full hover:bg-primary/30 transition-colors">
                             <i class="fab fa-whatsapp text-xl"></i>
                         </a>
                     </div>
@@ -780,6 +779,7 @@
         </div>
     </footer>
 
+    <script src="./src/JS/scroll.js"></script>
     <script>
         // Controle do Menu Mobile
         const menuButton = document.getElementById('mobile-menu-button');
