@@ -18,6 +18,9 @@
         href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;700&family=Archivo+Black&display=swap"
         rel="stylesheet">
 
+    <!-- Adicione no HEAD -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+
     <!-- Estilos Aprimorados -->
     <style>
         :root {
@@ -60,6 +63,35 @@
             -webkit-backdrop-filter: blur(16px);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
         }
+
+
+        /* Navbar  */
+
+        /* Animação do ícone do menu */
+        #mobile-menu-button.active .menu-icon-top {
+            transform: translateY(6px) rotate(45deg);
+        }
+
+        #mobile-menu-button.active .menu-icon-middle {
+            opacity: 0;
+        }
+
+        #mobile-menu-button.active .menu-icon-bottom {
+            transform: translateY(-6px) rotate(-45deg);
+        }
+
+        .menu-icon-top,
+        .menu-icon-middle,
+        .menu-icon-bottom {
+            transition: all 0.3s ease;
+            transform-origin: center;
+        }
+
+        #mobile-menu {
+            transform: translateY(0);
+        }
+
+
 
         .button-primary {
             background-color: var(--primary);
@@ -140,15 +172,25 @@
             border-radius: 2px;
         }
 
+        /* Swiper */
 
-        .active-filter {
-            background-color: var(--primary);
-            color: var(--light);
-            border-color: transparent;
+        /* Customização do Swiper */
+        .swiper-button-next,
+        .swiper-button-prev {
+            color: var(--primary) !important;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 1.5rem;
+            border-radius: 50%;
+            backdrop-filter: blur(4px);
         }
 
-        #portfolio-grid img {
-            transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 1.5rem !important;
+        }
+
+        .swiper-pagination-bullet {
+            background: var(--primary) !important;
         }
     </style>
 </head>
@@ -156,45 +198,71 @@
 <body class="font-body bg-light">
 
     <!-- Navbar Inteligente -->
-    <nav class="fixed w-full bg-light/95 backdrop-blur-md z-50">
-        <div class="container mx-auto px-4 xl:px-0 py-3">
-            <div class="flex items-center justify-between">
-                <!-- Logo Interativo -->
-                <a href="#" class="flex items-center gap-2 group">
-                    <div class="bg-primary rounded-lg shadow-md">
-                        <span class="font-cta text-2xl p-2 text-white">VHR</span>
+    <nav class="fixed w-full bg-light/95 backdrop-blur-md z-50 shadow-lg">
+        <div class="container mx-auto px-4">
+            <div class="flex items-center justify-between h-16">
+                <!-- Logo -->
+                <a href="#" class="flex items-center gap-2">
+                    <div class="bg-primary p-2 rounded-lg">
+                        <span class="font-cta text-xl text-white">VHR</span>
                     </div>
-                    <span class="font-cta text-2xl text-dark">PRINT</span>
+                    <span class="font-cta text-xl text-dark">PRINT</span>
                 </a>
 
-                <!-- Menu Desktop Dinâmico -->
+                <!-- Menu Desktop -->
                 <div class="hidden lg:flex items-center gap-8">
+                    <a href="#" class="text-dark hover:text-primary transition-all font-medium relative group">
+                        Home
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="text-dark hover:text-secondary transition-all font-medium relative group">
+                        Serviços
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="text-dark hover:text-primary transition-all font-medium relative group">
+                        Portfólio
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-[2px] bg-primary transition-all group-hover:w-full"></span>
+                    </a>
+                    <a href="#" class="text-dark hover:text-secondary transition-all font-medium relative group">
+                        Contato
+                        <span
+                            class="absolute -bottom-1 left-0 w-0 h-[2px] bg-secondary transition-all group-hover:w-full"></span>
+                    </a>
                     <a href="#"
-                        class="text-dark hover:text-primary transition-all font-medium hover:-translate-y-1">Home</a>
-                    <a href="#"
-                        class="text-dark hover:text-secondary transition-all font-medium hover:-translate-y-1">Serviços</a>
-                    <a href="#"
-                        class="text-dark hover:text-primary transition-all font-medium hover:-translate-y-1">Portfólio</a>
-                    <a href="#"
-                        class="text-dark hover:text-secondary transition-all font-medium hover:-translate-y-1">Contato</a>
-                    <a href="#" class="button-primary px-6 py-3 rounded-full shadow-lg font-cta">
-                        ORÇAMENTO EXPRESS
+                        class="button-primary px-6 py-3 rounded-full shadow-lg font-cta hover:scale-105 transition-transform">
+                        ORÇAMENTO
                     </a>
                 </div>
 
-                <!-- Mobile Menu Moderno -->
-                <button id="mobile-menu-button" class="lg:hidden text-dark p-2 rounded-lg hover:bg-gray-100">
-                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <!-- Mobile Menu Button -->
+                <button id="mobile-menu-button" class="lg:hidden p-2">
+                    <svg class="w-6 h-6 text-dark" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M4 6h16M4 12h16M4 18h16" />
+                            d="M4 6h16M4 12h16M4 18h16"/>
                     </svg>
                 </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="lg:hidden absolute w-full bg-white shadow-lg hidden">
+            <div class="container mx-auto px-4 py-4">
+                <div class="flex flex-col space-y-4">
+                    <a href="#" class="text-dark hover:text-primary">Home</a>
+                    <a href="#" class="text-dark hover:text-secondary">Serviços</a>
+                    <a href="#" class="text-dark hover:text-primary">Portfólio</a>
+                    <a href="#" class="text-dark hover:text-secondary">Contato</a>
+                    <a href="#" class="button-primary w-full text-center py-2 rounded-full">Orçamento</a>
+                </div>
             </div>
         </div>
     </nav>
 
     <!-- Hero Section Ultra Impactante -->
-    <section class="min-h-screen flex items-center pt-20 pb-12 lg:pt-0">
+    <section class="min-h-screen flex items-center pt-20 lg:pt-0">
         <div class="container mx-auto px-4 xl:px-0">
             <div class="grid lg:grid-cols-2 gap-16 items-center">
                 <!-- Conteúdo Principal -->
@@ -242,23 +310,6 @@
         </div>
     </section>
 
-    <!-- Mobile Menu Full-Screen -->
-    <div id="mobile-menu" class="lg:hidden fixed inset-0 bg-light z-50 hidden transition-opacity">
-        <div class="container mx-auto px-4 py-8 h-full flex flex-col justify-center">
-            <div class="flex flex-col space-y-6 text-center">
-                <a href="#" class="text-3xl text-dark hover:text-primary py-3">Home</a>
-                <a href="#" class="text-3xl text-dark hover:text-secondary py-3">Serviços</a>
-                <a href="#" class="text-3xl text-dark hover:text-primary py-3">Portfólio</a>
-                <a href="#" class="text-3xl text-dark hover:text-secondary py-3">Contato</a>
-                <button class="bg-primary text-light px-8 py-4 rounded-full mx-auto mt-8 
-                          font-cta hover:bg-secondary transition-all">
-                    ORÇAMENTO RÁPIDO
-                </button>
-            </div>
-        </div>
-    </div>
-
-
     <!-- Seção Sobre Simplificada -->
     <section class="min-h-screen flex items-center py-20">
         <div class="container mx-auto px-4 xl:px-0 max-w-3xl"> <!-- Limite de largura -->
@@ -266,11 +317,11 @@
 
                 <!-- Cabeçalho -->
                 <div class="mb-12">
-                    <span class="font-cta text-primary text-lg">DESDE 2015</span>
+                    <span class="font-cta text-primary text-lg">DESDE 2023</span>
                     <div class="decorative-line"></div>
                     <h2 class="font-heading text-5xl md:text-6xl text-dark mb-4">
                         <span class="text-highlight">VHR PRINT</span><br>
-                        <span class="text-primary">PASSÃO POR</span>
+                        <span class="text-primary">SOMOS ESPECIALISTAS EM</span>
                         <span class="text-secondary">DETALHES</span>
                     </h2>
                 </div>
@@ -288,11 +339,11 @@
                     <!-- Destaques -->
                     <div class="grid md:grid-cols-3 gap-6 mt-16">
                         <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
-                            <div class="text-primary font-cta text-4xl mb-2">15K+</div>
+                            <div class="text-primary font-cta text-4xl mb-2">+200</div>
                             <div class="text-dark">Projetos Entregues</div>
                         </div>
                         <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
-                            <div class="text-secondary font-cta text-4xl mb-2">48h</div>
+                            <div class="text-secondary font-cta text-4xl mb-2">24/7</div>
                             <div class="text-dark">Entrega Expressa</div>
                         </div>
                         <div class="p-2 md:p-6 border rounded-xl hover:shadow-lg transition-all">
@@ -309,6 +360,141 @@
                         <a href="#" class="button-secondary px-8 py-4">
                             ENTRE EM CONTATO
                         </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-light">
+        <div class="container mx-auto px-4">
+            <h2 class="font-heading text-3xl md:text-4xl text-center mb-6 md:mb-12">
+                <span class="text-primary">Nossos</span>
+                <span class="text-secondary">Serviços</span>
+            </h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+                <!-- Card 1 - Impressões Tradicionais -->
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-2xl md:text-4xl mb-2 md:mb-4">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-2 md:mb-4">Impressão Digital</h3>
+                    <ul class="space-y-1 md:space-y-2 text-dark/90">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Cartões de visita
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Flyers e folhetos
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Cartazes promocionais
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Adesivos personalizados
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 2 - Impressão 3D -->
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-secondary text-2xl md:text-4xl mb-2 md:mb-4">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-2 md:mb-4">Impressão 3D</h3>
+                    <ul class="space-y-1 md:space-y-2 text-dark/90">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                            Prototipagem rápida
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                            Maquetes arquitetônicas
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                            Peças personalizadas
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-secondary rounded-full"></span>
+                            Modelos educativos
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Card 3 - Envelopamento -->
+                <div class="bg-white p-4 md:p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow">
+                    <div class="text-primary text-2xl md:text-4xl mb-2 md:mb-4">
+                        <i class="fas fa-film"></i>
+                    </div>
+                    <h3 class="font-cta text-xl text-dark mb-2 md:mb-4">Envelopamento</h3>
+                    <ul class="space-y-1 md:space-y-2 text-dark/90">
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Objetos
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Fachadas de lojas
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Painéis promocionais
+                        </li>
+                        <li class="flex items-center gap-2">
+                            <span class="w-2 h-2 bg-primary rounded-full"></span>
+                            Adesivação profissional
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4 xl:px-0">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <!-- Imagem -->
+                <div class="order-1 md:order-2 max-w-xl">
+                    <img src="./src/Img/img_desc.jpeg" 
+                         alt="Profissionalismo gráfico" 
+                         class="w-full h-auto rounded-xl shadow-lg object-cover"
+                         loading="lazy">
+                </div>
+    
+                <!-- Texto -->
+                <div class="order-2 md:order-1">
+                    <div class="text-center md:text-left mb-8">
+                        <h2 class="font-heading text-3xl md:text-4xl text-dark mb-4">
+                            <span class="text-primary">Qualidade</span>
+                            <span class="text-secondary">que Impressiona</span>
+                        </h2>
+                        <div class="w-24 h-1 bg-primary mx-auto md:mx-0 mb-8"></div>
+                    </div>
+    
+                    <div class="space-y-6 text-dark/90 text-lg leading-relaxed">
+                        <p class="flex items-start gap-3">
+                            <span class="text-primary text-xl mt-1">•</span>
+                            Em um mercado cada vez mais visual, o impacto gráfico é decisivo na percepção 
+                            da sua marca. Trabalhamos com precisão técnica para garantir que cada projeto 
+                            comunique profissionalismo.
+                        </p>
+    
+                        <p class="flex items-start gap-3">
+                            <span class="text-secondary text-xl mt-1">•</span>
+                            Nossa equipe especializada combina tecnologia de ponta com atenção aos detalhes, 
+                            desde a pré-impressão até o acabamento final, garantindo resultados impecáveis.
+                        </p>
+    
+                        <p class="flex items-start gap-3">
+                            <span class="text-primary text-xl mt-1">•</span>
+                            Materiais de alta qualidade, processos rigorosos e prazos cumpridos são a base 
+                            do nosso compromisso com a excelência gráfica.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -375,8 +561,8 @@
                                 d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                         </svg>
                     </div>
-                    <h3 class="font-cta text-xl text-dark mb-4">Projetos Especiais</h3>
-                    <p class="text-dark mb-6">Desenvolvimento de embalagens premium e materiais promocionais</p>
+                    <h3 class="font-cta text-xl text-dark mb-4">Impressão 3D</h3>
+                    <p class="text-dark mb-6">Impressão 3D com alta qualidade e tecnologia avançada</p>
                     <a href="#" class="text-primary hover:text-secondary flex items-center gap-2">
                         Solicite o seu projeto
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -405,50 +591,45 @@
 
 
 
-    
 
 
 
 
 
-    <!-- Seção Portfólio -->
+
+    <!-- Seção Carrossel -->
     <section class="py-20 bg-light">
         <div class="container mx-auto px-4 xl:px-0">
-            <div class="text-center mb-12 animate-slide-in">
-                <h2 class="font-heading text-4xl md:text-5xl text-dark mb-4">
-                    <span class="text-primary">NOSSOS</span>
-                    <span class="text-secondary">PROJETOS</span>
+            <div class="text-center mb-8 md:mb-12">
+                <h2 class="font-heading text-4xl md:text-5xl text-dark mb-2 md:mb-4">
+                    <span class="text-primary">PROJETOS</span>
+                    <span class="text-secondary">EM DESTAQUE</span>
                 </h2>
-                <p class="text-dark text-lg md:text-xl">Conheça alguns dos trabalhos que já realizamos</p>
+                <p class="text-dark text-lg md:text-xl">Conheça nosso trabalho através desses cases</p>
             </div>
 
-            <!-- Filtros -->
-            <div class="flex flex-wrap gap-4 justify-center mb-12" id="portfolio-filters">
-                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors active-filter"
-                    data-filter="all">
-                    Todos
-                </button>
-                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
-                    data-filter="grafica">
-                    Gráfica
-                </button>
-                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
-                    data-filter="sinalizacao">
-                    Sinalização
-                </button>
-                <button class="px-6 py-2 rounded-full border hover:bg-primary/10 transition-colors"
-                    data-filter="personalizados">
-                    Personalizados
-                </button>
+            <!-- Container do Swiper -->
+            <div class="swiper portfolioSwiper relative">
+                <div class="swiper-wrapper">
+                    <!-- Slides serão gerados dinamicamente -->
+                </div>
+
+                <!-- Navegação -->
+                <div class="swiper-button-next text-primary"></div>
+                <div class="swiper-button-prev text-primary"></div>
+                <div class="swiper-pagination"></div>
             </div>
 
-            <!-- Grid de Projetos -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="portfolio-grid">
-                <!-- Projetos serão inseridos dinamicamente aqui -->
+            <!-- Botão WhatsApp -->
+            <div class="text-center mt-6 md:mt-12">
+                <a href="https://wa.me/5544999999999" target="_blank"
+                    class="button-secondary inline-flex items-center gap-2 px-8 py-4">
+                    <i class="fab fa-whatsapp"></i>
+                    Quero um Projeto Igual
+                </a>
             </div>
         </div>
     </section>
-
 
 
 
@@ -534,7 +715,7 @@
                         <span class="font-cta text-xl">PRINT</span>
                     </div>
                     <p class="text-sm opacity-80">
-                        Transformando ideias em impressões memoráveis desde 2015
+                        Transformando ideias em impressões memoráveis desde 2023
                     </p>
                 </div>
 
@@ -599,27 +780,35 @@
         </div>
     </footer>
 
-
     <script>
-        // Controle de Menu Avançado
+        // Controle do Menu Mobile
         const menuButton = document.getElementById('mobile-menu-button');
         const mobileMenu = document.getElementById('mobile-menu');
 
-        menuButton.addEventListener('click', () => {
+        function toggleMenu() {
             mobileMenu.classList.toggle('hidden');
-            document.body.classList.toggle('overflow-hidden');
+        }
+
+        // Fechar menu ao clicar em links
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', toggleMenu);
         });
 
-        // Fechar menu ao tocar fora
-        mobileMenu.addEventListener('click', (e) => {
-            if (e.target === mobileMenu) {
+        // Toggle menu
+        menuButton.addEventListener('click', toggleMenu);
+
+        // Fechar ao redimensionar
+        window.addEventListener('resize', () => {
+            if (window.innerWidth >= 1024) {
                 mobileMenu.classList.add('hidden');
-                document.body.classList.remove('overflow-hidden');
             }
         });
 
+
+
         // Observador de Intersecção para Animação
         const observer = new IntersectionObserver((entries) => {
+            s
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('animate-slide-in');
@@ -630,96 +819,109 @@
         document.querySelectorAll('.animate-on-scroll').forEach(el => {
             observer.observe(el);
         });
+    </script>
 
-
-
-
-
-
-
-
-
-
-        // Array de projetos
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+        // Swiper para galeria
+        // Array de Projetos
         const portfolioItems = [
             {
-                image: "projeto-01.jpg",
-                category: "grafica",
-                title: "Material Promocional",
-                description: "Cartazes em alta resolução para campanha verão"
+                image: "src/img/img_portf_1.jpg",
+                title: "Etiquetas",
+                description: "Etiquetas gráficas personalizadas para uso em lojas"
             },
             {
-                image: "projeto-02.jpg",
-                category: "sinalizacao",
-                title: "Placas Corporativas",
-                description: "Sinalização interna para empresa de tecnologia"
+                image: "src/img/img_portf_2.jpg",
+                title: "Embalagens Premium",
+                description: "Embalagens personalizadas para aniversarios e eventos"
             },
             {
-                image: "projeto-03.jpg",
-                category: "personalizados",
-                title: "Brindes Personalizados",
-                description: "Canecas e ecobags com estampa digital"
+                image: "src/img/img_portf_3.jpg",
+                title: "Adesivos Personalizados",
+                description: "Desenvolvimento de adesivos personalizados"
             },
             {
-                image: "projeto-04.jpg",
-                category: "grafica",
-                title: "Folders Institucionais",
-                description: "Material gráfico para rede de clínicas"
+                image: "src/img/img_portf_4.jpg",
+                title: "Peça Decorativa",
+                description: "Desenvolvimento de pecas decorativas em impressão 3D"
             },
             {
-                image: "projeto-05.jpg",
-                category: "sinalizacao",
-                title: "Fachada Luminosa",
-                description: "Instalação completa para loja conceito"
+                image: "src/img/img_portf_5.jpg",
+                title: "Peça Decorativa",
+                description: "Desenvolvimento de pecas decorativas em impressão 3D"
             },
             {
-                image: "projeto-06.jpg",
-                category: "personalizados",
-                title: "Uniforme Corporativo",
-                description: "Estamparia em camisas polo"
+                image: "src/img/img_portf_6.jpg",
+                title: "Envelopamento",
+                description: "Desenvolvimento de envelopamentos personalizados"
+            },
+            {
+                image: "src/img/img_portf_7.jpg",
+                title: "Cardapio",
+                description: "Impressão de cardapio fisico personalizado"
+            },
+            {
+                image: "src/img/img_portf_8.jpg",
+                title: "Envelopamento",
+                description: "Desenvolvimento de envelopamentos personalizados"
+            },
+            {
+                image: "src/img/img_portf_9.jpg",
+                title: "Cartazes",
+                description: "Desenvolvimento de cartazes personalizados"
             }
         ];
 
-        // Função para gerar os cards
-        function generatePortfolioItems(filter = 'all') {
-            const grid = document.getElementById('portfolio-grid');
-            grid.innerHTML = '';
+        // Gerar Slides
+        const swiperWrapper = document.querySelector('.swiper-wrapper');
 
-            const filteredItems = filter === 'all'
-                ? portfolioItems
-                : portfolioItems.filter(item => item.category === filter);
-
-            filteredItems.forEach(item => {
-                const card = `
-            <div class="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all">
-                <img src="src/img/portfolio/${item.image}" 
+        portfolioItems.forEach(item => {
+            const slide = `
+        <div class="swiper-slide">
+            <div class="relative group overflow-hidden rounded-2xl shadow-xl">
+                <img src="${item.image}" 
                      alt="${item.title}" 
-                     class="w-full h-64 object-cover transform group-hover:scale-105 transition-transform"
-                     loading="lazy">
-                
-                <div class="absolute inset-0 bg-gradient-to-t from-dark/60 to-transparent p-6 flex flex-col justify-end">
-                    <h3 class="font-cta text-light text-xl mb-2">${item.title}</h3>
-                    <p class="text-light/80 text-sm">${item.description}</p>
+                     class="w-full h-96 object-cover transition-transform duration-700 group-hover:scale-105">
+
+                <div class="absolute bg-black/40 inset-0 p-8 flex flex-col justify-end">
+                    <h3 class="font-cta text-white text-2xl mb-2">${item.title}</h3>
+                    <p class="text-white">${item.description}</p>
                 </div>
             </div>
-        `;
-                grid.innerHTML += card;
-            });
-        }
+        </div>
+    `;
+            swiperWrapper.innerHTML += slide;
+        });
 
-        // Filtragem
-        document.querySelectorAll('#portfolio-filters button').forEach(button => {
-            button.addEventListener('click', () => {
-                // Remove classe ativa
-                document.querySelectorAll('#portfolio-filters button').forEach(btn => {
-                    btn.classList.remove('active-filter', 'bg-primary', 'text-light');
-                });
-
-                // Adiciona classe ativa
-                button.classList.add('active-filter', 'bg-primary', 'text-light');
-                const filter = button.dataset.filter;
-                generatePortfolioItems(filter);
-            });
+        // Inicializar Swiper
+        const swiper = new Swiper('.portfolioSwiper', {
+            loop: true,
+            autoplay: {
+                delay: 3000,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                    spaceBetween: 20,
+                },
+                768: {
+                    slidesPerView: 2,
+                    spaceBetween: 30,
+                },
+                1024: {
+                    slidesPerView: 3,
+                    spaceBetween: 40,
+                },
+            }
         });
     </script>
 </body>
